@@ -79,7 +79,7 @@ class Board:
             if left < 0:
                 break
 
-            current = self.get_piece(r, left)
+            current = self.board[r][left]
 
             if current == 0:
                 if skipped and not last:
@@ -97,8 +97,8 @@ class Board:
 
                     moves.update(self._traverse_left(r + step, row, step, color, left - 1, skipped=last))
                     moves.update(self._traverse_right(r + step, row, step, color, left + 1, skipped=last))
-                    break
 
+                break
             elif current.color == color:
                 break
             else:
@@ -116,7 +116,7 @@ class Board:
             if right >= COLS:
                 break
 
-            current = self.get_piece(r, right)
+            current = self.board[r][right]
 
             if current == 0:
                 if skipped and not last:
@@ -134,8 +134,8 @@ class Board:
 
                     moves.update(self._traverse_left(r + step, row, step, color, right - 1, skipped=last))
                     moves.update(self._traverse_right(r + step, row, step, color, right + 1, skipped=last))
-                    break
 
+                break
             elif current.color == color:
                 break
             else:
