@@ -23,6 +23,10 @@ def main():
     while run:
         clock.tick(FPS)
 
+        if game.winner() != None:
+            print(game.winner())
+            run = False
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -31,8 +35,7 @@ def main():
                 pos = pygame.mouse.get_pos()
                 row, col = get_row_col_from_mouse(pos)
 
-                if game.turn == RED:
-                    game.select(row, col)
+                game.select(row, col)
 
         game.update()
 
